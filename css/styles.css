@@ -1,8 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Montserrat:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
 
 :root {
     --color-bg: #c4bcaf;
-    --color-font: #202020;
+    --color-font: rgb(38, 25, 17);
+
+    --color-one: rgb(102, 74, 50);
+    --color-two: rgb(191, 175, 160);
+    --color-three: rgb(249, 246, 239);
 }
 
 * {
@@ -19,18 +23,65 @@ html {
 body {
     background-color: var(--color-bg);
     color: var(--color-font);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 1.rem;
+    font-size: 1.2rem;
+    font-weight: 300;
     line-height: 1.5;
+    min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Libre Baskerville', serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+section:not(.section--hero) {
+    margin: 6rem 0;
 }
 
 .section__content {
     padding: 3rem;
+}
+
+.section__title {
+    margin-bottom: 4.5rem;
+    text-align: center;
+}
+
+.section__title span {
+    font-size: 4.5rem;
+    position: relative;
+    text-align: center;
+}
+
+.section__title span::before,
+.section__title span::after {
+    background-color: var(--color-font);
+    content: '';
+    display: block;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    width: 320px;
+}
+
+.section__title span::before {
+    left: calc(-4.5rem - 320px);
+}
+
+.section__title span::after {
+    right: calc(-4.5rem - 320px);
 }
 
 .header {
@@ -56,15 +107,61 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
 }
 
+.section__content--hero {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+
 .hero {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;;
+    display: flex; 
 }
 
 .hero__title {
-    font-size: 3.5rem;
+    font-size: 4.2rem;
+    margin-bottom: .75rem;
+}
+
+.hero__content {
+    text-align: center;
+}
+
+.hero__content span {
+    font-size: 1.2rem;
+    margin: 0 .75rem;
+    opacity: .75;
+    position: relative;
+}
+
+.hero__content span::after {
+    content: '|';
+    position: absolute;
+    right: -0.75rem;
+}
+
+.hero__content span:last-child:after {
+    display: none;
+}
+
+.timeline {
+    margin-top: 1.5rem;
+}
+ 
+.biography {
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+    gap: 4.5rem;
+}
+
+.footer {
+    text-align: center;
 }
