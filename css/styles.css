@@ -348,11 +348,6 @@ section:not(.section--hero) {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .career__content {
-        padding: 1.5rem 0;
-        text-align: center;
-    }
-
     .publications {
         grid-template-columns: repeat(3, 1fr);
     }
