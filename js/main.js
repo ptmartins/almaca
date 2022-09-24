@@ -1,13 +1,18 @@
 (function() {
 
     let DOM = {},
+        publicationsData = null,
         publications = null,
         career = null,
 
+        /**
+         * Cache DOM elements
+         */
         cacheDOM = () => {
             DOM.publications = document.querySelector('.publications');
             DOM.career = document.querySelector('.career');
             DOM.scrollTop = document.querySelector('.scrollTop');
+            DOM.search = document.getElementById('search');
         },
 
         UI = {
@@ -41,8 +46,8 @@
 
         getData = () => {
             fetch('publications.json').then(response => response.json()).then(data => {
-                publications = data;
-                renderPublications(publications);
+                publicationsData = data;
+                renderPublications(publicationsData);
             });
 
             fetch('career.json').then(response => response.json()).then(data => {
@@ -78,12 +83,49 @@
 
                 DOM.career.append(career);
             });
+
+            publications = document.querySelectorAll('.publication');
         },
     
         renderPublications = (data) => {
             data.forEach((pub, i) => {
                 DOM.publications.append(UI.pub(pub, i));
             });
+
+            DOM.publications
+        },
+
+        searchPubs = val => {
+
+	        let filterValue = DOM.search.value.toLowerCase();
+
+            if(filterValue.charAt(0) != '-') {
+                for(pub of publications) {
+                    var pubText = pub.textContent.toLowerCase();
+
+                    if(pubText.indexOf(filterValue) > -1) {
+                        pub.style.display = 'block';
+                        pub.classList.add('filtered');
+                    } else {
+                        pub.style.display = 'none'; 
+                        pub.classList.remove('filtered');
+                    }
+                }
+            } else if(filterValue.charAt(0) == '-' && filterValue.charAt(1) != '') {
+                for(pub of publications) {
+                    var pubText = pub.textContent.toUpperCase();
+                    var filter = filterValue.substr(1);
+
+                    if(pubText.indexOf(filter) > -1) {
+                        pub.style.display = 'none';
+                        pub.classList.remove('filtered');
+                    } else {
+                        pub.style.display = 'block';
+                        pub.classList.add('filtered');
+                    }
+                }
+            }
+
         },
 
         bindEvents = () => {
@@ -93,6 +135,10 @@
                 } else {
                     DOM.scrollTop.classList.remove('active');
                 }
+            });
+
+            DOM.search.addEventListener('keyup', ev => {
+                searchPubs(ev.target.value);
             });
         },
 
