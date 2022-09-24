@@ -71,8 +71,8 @@ section:not(.section--hero) {
 
 .section__title span {
     background-color: var(--color-bg);
-    font-size: 3rem;
-    padding: .75rem 6rem;
+    font-size: 2.4rem;
+    padding: .75rem 1.5rem;
     position: relative;
     text-align: center;
 }
@@ -129,6 +129,9 @@ section:not(.section--hero) {
 }
 
 .section__content--hero {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -151,12 +154,12 @@ section:not(.section--hero) {
             flex-direction: column;
 }
 
-.hero__title {
-    font-size: 4.2rem;
-    margin-bottom: .75rem;
+.hero__graphics img {
+    height: 300px;
 }
 
 .hero__content {
+    margin-top: 1.5rem;
     text-align: center;
 }
 
@@ -169,25 +172,23 @@ section:not(.section--hero) {
     text-transform: uppercase;
 }
 
-
 .hero__content span:last-child{
     border-right: 0;
+}
+
+.hero__title {
+    font-size: 3rem;
+    margin-bottom: .75rem;
 }
 
 .timeline {
     margin-top: 1.5rem;
 }
- 
-/* .biography {
-    -webkit-column-count: 2;
-       -moz-column-count: 2;
-            column-count: 2;
-    gap: 4.5rem;
-} */
 
 .career {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: repeat(1, 1fr);
     gap: 3rem;
 }
 
@@ -195,6 +196,10 @@ section:not(.section--hero) {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .career__years {
@@ -208,11 +213,15 @@ section:not(.section--hero) {
     display: flex;
     -ms-flex-negative: 0;
         flex-shrink: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     padding: 1.5rem;
 }
 
 .career__content {
-    padding: 1.5rem;
+    padding: 1.5rem 0;
+    text-align: center;
 }
 
 .career__content p {
@@ -233,12 +242,12 @@ section:not(.section--hero) {
 .publications {
     display: grid;
     font-size: 1rem;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 3rem;
 }
 
 .publication {
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .publication__author {
@@ -261,7 +270,7 @@ section:not(.section--hero) {
             align-items: center;
     background-color: var(--color-font);
     border-radius: 10px;
-    bottom: 1.5rem;
+    bottom: 3rem;
     color: var(--color-bg) !important;
     cursor: pointer;
     display: -webkit-box;
@@ -287,35 +296,65 @@ section:not(.section--hero) {
     pointer-events: all;
 }
 
+@media all and (min-width: 480px) {
 
-@media all and (min-width: 768px) {
-
-    html {
-        font-size: 16px;
+    .hero__graphics img {
+        height: 420px;
     }
 
-    body {
-        font-size: 1.1rem;
+    .career__item {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
     }
 
-    .section:not(.section--hero) {
-        padding: 0 3rem;
+    .career__content {
+        padding: 1.5rem;
+        text-align: left;
     }
+}
 
-    .section__title {
-        font-size: 3.5rem;
-        margin-bottom: 4.5rem;
-    }
-
-    .section__title span {
-        font-size: 4.5rem;
-    }
+@media all and (min-width: 600px) {
 
     .biography {
         -webkit-column-count: 2;
            -moz-column-count: 2;
                 column-count: 2;
-        gap: 4.5rem;
+        gap: 3rem;
+    }
+   
+    .publications {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .publication {
+        font-size: 15px;
+    }
+}
+
+@media all and (min-width: 768px) {
+
+    .section__title span {
+        font-size: 4.5rem;
+        padding: .75rem 6rem;
+    }
+
+    .hero__graphics img {
+        height: auto;
+    }
+
+    .career {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .career__content {
+        padding: 1.5rem 0;
+        text-align: center;
+    }
+
+    .publications {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -334,6 +373,10 @@ section:not(.section--hero) {
                 flex-direction: row;
     }
 
+    .hero__title {
+        font-size: 4.2rem;    
+    }
+
     .header {
         -webkit-box-pack: end;
             -ms-flex-pack: end;
@@ -342,5 +385,13 @@ section:not(.section--hero) {
 
     .section__title {
         margin-bottom: 6rem;
+    }
+
+    .biography {
+        gap: 4.5rem;
+    }
+
+    .publications {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
