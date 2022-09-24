@@ -247,6 +247,10 @@ section:not(.section--hero) {
     text-align: center;
 }
 
+.species__img {
+   width: 240px;
+}
+
 .species__name {
     font-style: italic;
 }
@@ -334,6 +338,10 @@ section:not(.section--hero) {
         font-size: 1rem;
     }
 
+    .species__img {
+        width: 320px;
+     }
+
     .career__item {
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
@@ -359,6 +367,10 @@ section:not(.section--hero) {
                 column-count: 2;
         gap: 3rem;
     }
+
+    .species__img {
+        width: auto;
+     }
    
     .publications {
         grid-template-columns: repeat(2, 1fr);
