@@ -1,22 +1,42 @@
 [
     {
         "role": "Professor Assistente de Zoologia",
-        "years": "1963-1968",
+        "years": "1963 - 1968",
         "institution": "Universidade de Lisboa"
     },
     {
         "role": "Professor Assistente",
-        "years": "1968-1971",
+        "years": "1968 - 1971",
         "institution": "Universidade de Lisboa"
     },
     {
         "role": "Professor Associado",
-        "years": "1971-1978",
+        "years": "1971 - 1978",
         "institution": "Universidade de Lisboa"
     },
     {
         "role": "Professor",
-        "years": "1979-2010",
+        "years": "1979 - 2010",
         "institution": "Universidade de Lisboa"
+    },
+    {
+        "role": "Membro Correspondente - Artes Letras e Ciencias",
+        "years": "1979 - 2010",
+        "institution": "Academia das Ciencias de Lisboa"
+    },
+    {
+        "role": "Membro Pleno",
+        "years": "1979 - 2010",
+        "institution": "Academia da Marinha"
+    },
+    {
+        "role": "Membro",
+        "years": "1979 - 2010",
+        "institution": "The Linnean Society of London"
+    },
+    {
+        "role": "Membro - Comissao de Ecologia",
+        "years": "1979 - 2010",
+        "institution": "The International Union for Conservation of Nature (IUCN) "
     }
 ]
