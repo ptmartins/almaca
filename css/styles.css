@@ -2,11 +2,11 @@
 
 :root {
     --color-bg: #c4bcaf;
-    --color-font: rgb(38, 25, 17);
+    --color-font: #261911;
 
-    --color-one: rgb(102, 74, 50);
-    --color-two: rgb(191, 175, 160);
-    --color-three: rgb(249, 246, 239);
+    --color-one: #664a32;
+    --color-two: #bfafa0;
+    --color-three: #f9f6ef;
 }
 
 * {
@@ -271,6 +271,18 @@ section:not(.section--hero) {
     width: 90%;
 }
 
+.search {
+    margin-bottom: 3rem;
+    text-align: right;
+}
+
+.search__input {
+    background-color: var(--color-two);
+    border: 1px solid var(--color-font);
+    padding: .75rem;
+    width: 100%;
+}
+
 .publications {
     display: grid;
     font-size: 1rem;
@@ -353,6 +365,10 @@ section:not(.section--hero) {
         padding: 1.5rem;
         text-align: left;
     }
+
+    .search__input {
+        width: 60%;
+    }
 }
 
 @media all and (min-width: 600px) {
@@ -371,6 +387,11 @@ section:not(.section--hero) {
     .species__img {
         width: auto;
      }
+
+     .search__input {
+        max-width: 480px;
+        width: 60%;
+    }
    
     .publications {
         grid-template-columns: repeat(2, 1fr);
