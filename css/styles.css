@@ -243,6 +243,30 @@ section:not(.section--hero) {
     opacity: .75;
 }
 
+.species {
+    text-align: center;
+}
+
+.species__name {
+    font-style: italic;
+}
+
+.species__name--main {
+    font-size: 2rem;
+    margin: 1.5rem 0 0
+}
+
+.species__name--alt {
+    font-size: 1.5rem;
+    margin: .75rem 0;
+    opacity: .75;
+}
+
+.species__pub {
+    margin: 0 auto;
+    width: 90%;
+}
+
 .publications {
     display: grid;
     font-size: 1rem;
@@ -396,6 +420,11 @@ section:not(.section--hero) {
 
     .biography {
         gap: 4.5rem;
+    }
+
+    .species__pub {
+        margin: 0 auto;
+        width: 40%;
     }
 
     .publications {
