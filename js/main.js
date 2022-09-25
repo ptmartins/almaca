@@ -4,7 +4,7 @@
         publicationsData = null,
         publications = null,
         career = null,
-        hasFilteredPubs = false,
+        isSearching = false,
 
         /**
          * Cached DOM elements
@@ -107,7 +107,7 @@
                 total++;
             }
 
-            filtered > 0 ? total = filtered : total = publications.length;
+            filtered > 0 ? total = filtered : isSearching ? total = 0 : total = publications.length;
 
             DOM.pubTotal.textContent = total;
         },
@@ -129,6 +129,8 @@
          */
         searchPubs = val => {
 	        let filterValue = val;
+
+            val !== '' ? isSearching = true : isSearching = false;
 
             if(filterValue.charAt(0) != '-') {
                 for(pub of publications) {
