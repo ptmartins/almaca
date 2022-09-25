@@ -205,6 +205,12 @@ section:not(.section--hero) {
     height: 300px;
 }
 
+.hero__copyright,
+.species__copyright {
+    font-size: 9px;
+    text-align: center;
+}
+
 .hero__content {
     margin-top: 1.5rem;
     text-align: center;
@@ -299,17 +305,20 @@ section:not(.section--hero) {
 }
 
 .species__name--main {
-    font-size: 2rem;
+    /* font-size: 2rem; */
+    font-size: 1.5rem;
     margin: 1.5rem 0 0
 }
 
 .species__name--alt {
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
+    font-size: 1.2rem;
     margin: .75rem 0;
     opacity: .75;
 }
 
 .species__pub {
+    font-size: 14px;
     margin: 0 auto;
     width: 90%;
 }
@@ -443,6 +452,18 @@ section:not(.section--hero) {
            -moz-column-count: 2;
                 column-count: 2;
         gap: 3rem;
+    }
+
+    .species__name--main {
+        font-size: 2rem;
+    }
+    
+    .species__name--alt {
+        font-size: 1.5rem;
+    }
+    
+    .species__pub {
+        font-size: 1rem;
     }
 
     .species__img {
