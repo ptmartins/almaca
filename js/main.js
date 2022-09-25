@@ -4,17 +4,22 @@
         publicationsData = null,
         publications = null,
         career = null,
+        hasFilteredPubs = false,
 
         /**
-         * Cache DOM elements
+         * Cached DOM elements
          */
         cacheDOM = () => {
             DOM.publications = document.querySelector('.publications');
             DOM.career = document.querySelector('.career');
             DOM.scrollTop = document.querySelector('.scrollTop');
             DOM.search = document.getElementById('search');
+            DOM.pubTotal = document.querySelector('.total__number');
         },
 
+        /**
+         * UI objects
+         */
         UI = {
             pub: (item, index) => {
                 let pub = document.createElement('DIV'),
@@ -35,15 +40,14 @@
                 locale.textContent = item.locale;
 
                 pub.append(author, ', ', year, '. ', title, ' ' ,  source, ', ', locale);
-                
-                pub.setAttribute('data-aos', 'fade-up');
-                pub.setAttribute('data-aos-delay', index * 100);
-                pub.setAttribute('data-aos-duration', 1000);
 
                 return pub;
             }
         },
 
+        /**
+         * Get Data from JSON
+         */
         getData = () => {
             fetch('publications.json').then(response => response.json()).then(data => {
                 publicationsData = data;
@@ -56,6 +60,9 @@
             });
         },
 
+        /**
+         * Render career
+         */
         renderCareer = (data) => {
             data.forEach((item, i) => {
                 let career = document.createElement('DIV'),
@@ -83,38 +90,64 @@
 
                 DOM.career.append(career);
             });
+        },
 
-            publications = document.querySelectorAll('.publication');
+        /**
+         * Count number of publications
+         */
+        countPublications = () => {
+
+            let total = 0,
+                filtered = 0;
+
+            for(let i = 0; i < publications.length; i++) {
+                if(publications[i].classList.contains('filtered')) {
+                    filtered++;     
+                }
+                total++;
+            }
+
+            filtered > 0 ? total = filtered : total = publications.length;
+
+            DOM.pubTotal.textContent = total;
         },
     
+        /**
+         * Render publications
+         */
         renderPublications = (data) => {
             data.forEach((pub, i) => {
                 DOM.publications.append(UI.pub(pub, i));
             });
 
-            DOM.publications
+            publications = document.querySelectorAll('.publication');
+            countPublications();
         },
 
+        /**
+         * Search publications
+         */
         searchPubs = val => {
-
-	        let filterValue = DOM.search.value.toLowerCase();
+	        let filterValue = val;
 
             if(filterValue.charAt(0) != '-') {
                 for(pub of publications) {
-                    var pubText = pub.textContent.toLowerCase();
+                    let pubText = pub.textContent.toLowerCase();
 
                     if(pubText.indexOf(filterValue) > -1) {
                         pub.style.display = 'block';
+                        pub.style.opacity = '1';
                         pub.classList.add('filtered');
                     } else {
                         pub.style.display = 'none'; 
+                        pub.style.opacity = '0'; 
                         pub.classList.remove('filtered');
                     }
                 }
             } else if(filterValue.charAt(0) == '-' && filterValue.charAt(1) != '') {
                 for(pub of publications) {
-                    var pubText = pub.textContent.toUpperCase();
-                    var filter = filterValue.substr(1);
+                    let pubText = pub.textContent.toUpperCase(),
+                        filter = filterValue.substr(1);
 
                     if(pubText.indexOf(filter) > -1) {
                         pub.style.display = 'none';
@@ -126,8 +159,12 @@
                 }
             }
 
+            countPublications();
         },
 
+        /**
+         * Bind event listeners
+         */
         bindEvents = () => {
             document.addEventListener('scroll', () => {
                 if (window.scrollY > 600) {
@@ -138,10 +175,13 @@
             });
 
             DOM.search.addEventListener('keyup', ev => {
-                searchPubs(ev.target.value);
+                searchPubs(ev.target.value.toLowerCase());
             });
         },
 
+        /**
+         * Kick things off
+         */
         init = () => {
             cacheDOM();
             bindEvents();
