@@ -334,7 +334,7 @@ section:not(.section--hero) {
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
-    margin-bottom: 3rem;
+    margin-bottom: 4.5rem;
     text-align: right;
 }
 
