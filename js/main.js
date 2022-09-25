@@ -15,6 +15,8 @@
             DOM.scrollTop = document.querySelector('.scrollTop');
             DOM.search = document.getElementById('search');
             DOM.pubTotal = document.querySelector('.total__number');
+            DOM.burgerMenu = document.querySelector('.burgerMenu');
+            DOM.nav = document.querySelector('.nav');
         },
 
         /**
@@ -179,6 +181,48 @@
             DOM.search.addEventListener('keyup', ev => {
                 searchPubs(ev.target.value.toLowerCase());
             });
+
+            // Burger menu action
+            DOM.burgerMenu.addEventListener('click', toggleNav);
+
+            // Close navigation on hash change
+            window.addEventListener('hashchange', () => {
+                toggleNav();
+            });
+
+            // If open, close navigation on resize
+            window.addEventListener('resize', () => {
+                if(DOM.nav.classList.contains('active')) {
+                    toggleNav();
+                }
+            });
+
+            window.addEventListener('scroll', () => {
+                if(window,scrollY > 600) {
+                    if(DOM.nav.classList.contains('active')) {
+                        toggleNav();
+                    }
+                }
+            });
+        },
+
+        /**
+         * Toggle Navigation
+         */
+        toggleNav = () => {
+            DOM.nav.classList.toggle('active');
+           
+            if(DOM.nav.classList.contains('active')) {
+                if(DOM.burgerMenu.classList.contains('fa-bars')) {
+                    DOM.burgerMenu.classList.remove('fa-bars');
+                    DOM.burgerMenu.classList.add('fa-xmark');
+                } 
+                } else {
+                    if(DOM.burgerMenu.classList.contains('fa-xmark')) {
+                        DOM.burgerMenu.classList.remove('fa-xmark');
+                        DOM.burgerMenu.classList.add('fa-bars');
+                    }
+                }
         },
 
         /**
