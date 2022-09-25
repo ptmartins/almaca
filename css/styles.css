@@ -305,20 +305,18 @@ section:not(.section--hero) {
 }
 
 .species__name--main {
-    /* font-size: 2rem; */
     font-size: 1.5rem;
     margin: 1.5rem 0 0
 }
 
 .species__name--alt {
-    /* font-size: 1.5rem; */
     font-size: 1.2rem;
-    margin: .75rem 0;
+    margin: 0 0 1.5rem;
     opacity: .75;
 }
 
 .species__pub {
-    font-size: 14px;
+    font-size: 13px;
     margin: 0 auto;
     width: 90%;
 }
