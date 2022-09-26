@@ -4,6 +4,7 @@
     --color-bg: #c4bcaf;
     --color-font: #261911;
 
+    --color-zero: #7c5f45;
     --color-one: #664a32;
     --color-two: #bfafa0;
     --color-three: #f9f6ef;
@@ -49,8 +50,17 @@ p {
 }
 
 a {
+    border-bottom: 1px dashed var(--color-font);
     color: var(--color-font);
+    font-weight: 400;
     text-decoration: none;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+}
+
+a:hover {
+    border-color: var(--color-zero);
+    color: var(--color-zero);
 }
 
 section:not(.section--hero) {
@@ -374,6 +384,8 @@ section:not(.section--hero) {
 .footer {
     text-align: center;
 }
+
+
 
 /* Scroll to Top */
 .scrollTop {
