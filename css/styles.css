@@ -604,3 +604,7 @@ section:not(.section--hero) {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+@media all and (min-width: 1400px) {
+/*  */
+}
